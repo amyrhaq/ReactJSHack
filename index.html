@@ -1,0 +1,64 @@
+<!-- template.html -->
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>ReactJS Hack</title>
+</head>
+
+<body bgcolor="#87B7FF">
+    <script src="http://fb.me/react-0.4.1.js"></script> <script src="http://fb.me/JSXTransformer-0.4.1.js"></script>
+
+    <div id="content"></div><script type="text/jsx">
+    /**
+       * @jsx React.DOM
+       */
+    var TodoList = React.createClass({
+    render: function() {
+    var createItem = function(itemText) {
+      return <li>{itemText}</li>;
+    };
+    return <ul>{this.props.items.map(createItem)}</ul>;
+    }
+    });
+    var TodoApp = React.createClass({
+    getInitialState: function() {
+    return {items: [], text: ''};
+    },
+    onChange: function(e) {
+    this.setState({text: e.target.value});
+    },
+    handleSubmit: function(e) {
+    e.preventDefault();
+    var nextItems = this.state.items.concat([this.state.text]);
+    var nextText = '';
+    this.setState({items: nextItems, text: nextText});
+    },
+    render: function() {
+    return (
+      <div>
+        <h3>TODO</h3>
+        <TodoList items={this.state.items} />
+        <form onSubmit={this.handleSubmit}>
+          <input onChange={this.onChange} value={this.state.text} />
+          <button>{'Add #' + (this.state.items.length + 1)}</button>
+        </form>
+      </div>
+    );
+    }
+    });
+    React.renderComponent(<TodoApp />, document.getElementById("content"));
+    </script><br>
+    <a href=
+    "http://appery.io/app/view/759035c4-5866-4cb8-ad76-5061f3a0a0f0/FacebookPublishing_Login.html">
+    Facebook Login Button</a><br>
+    <img src="http://facebook.github.io/react/img/logo_og.png"><br>
+    <img src=
+    "http://www.gifcrap.com/g2data/albums/Animals/Keyboard%20Corgi.gif"><br>
+    <img src=
+    "http://img.gawkerassets.com/img/181y64lovkyjegif/original.gif"><br>
+    <img src='http://media.giphy.com/media/KySymGAt2SJmE/giphy.gif'><br>
+    <img src=
+    'http://i1.kym-cdn.com/photos/images/original/000/614/949/85b.gif'>
+</body>
+</html>
